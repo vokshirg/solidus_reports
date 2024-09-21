@@ -2,11 +2,11 @@
 
 module SolidusReports
   class Configuration < Spree::Preferences::Configuration
-    REPORT_TABS ||= [:reports].freeze
+    REPORT_TABS ||= :reports.freeze
 
     new_item = Spree::BackendConfiguration::MenuItem.new(
-      REPORT_TABS,
-      'file',
+      label: REPORT_TABS,
+      icon: 'file',
       condition: -> { can?(:admin, :reports) }
     )
     Spree::Backend::Config.menu_items << new_item
